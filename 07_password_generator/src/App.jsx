@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
 import heroImg from "./assets/hero.png";
@@ -9,6 +9,8 @@ function App() {
   const [numberAllowed, setNumberAllowed] = useState(false);
   const [symbolsAllowed, setSymbolsAllowed] = useState(false);
   const [password, setPassword] = useState("");
+
+  const passwordRef = useRef(null);
 
   const generatePassword = useCallback(() => {
     let pass = "";
@@ -45,6 +47,7 @@ function App() {
 
   const copyPasswordToClipboard = () => {
     window.navigator.clipboard.writeText(password);
+    passwordRef.current?.select();
   };
 
   return (
@@ -58,6 +61,7 @@ function App() {
             className="outline-none w-full py-1 px-3"
             placeholder="password"
             readOnly
+            ref={passwordRef}
           />
           <button
             className="outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0"
