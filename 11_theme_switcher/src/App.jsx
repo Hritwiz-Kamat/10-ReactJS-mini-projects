@@ -12,15 +12,15 @@ function App() {
   const darkTheme = () => {
     setThemeMode("dark");
   };
-  
+
   const lightTheme = () => {
     setThemeMode("light");
   };
 
-  useEffect(()=>{
-    document.querySelector("html").classList.remove("dark","light")
-    document.querySelector("html").classList.add(themeMode)
-  },[themeMode])
+  useEffect(() => {
+    document.querySelector("html").classList.remove("dark", "light");
+    document.querySelector("html").classList.add(themeMode);
+  }, [themeMode]);
 
   return (
     <ThemeProvider value={{ themeMode, darkTheme, lightTheme }}>
